@@ -1,4 +1,5 @@
 import entrypoints
+import os
 import warnings
 from six.moves import urllib
 
@@ -66,6 +67,8 @@ class ArtifactRepositoryRegistry:
             return repository(artifact_uri, store.get_host_creds)
         elif repository is not None:
             return repository(artifact_uri)
+        elif os.path.exists(artifact_uri):
+            return LocalArtifactRepository(artifact_uri)
         else:
             raise MlflowException(
                 "Could not find a registered artifact repository for: {}. "

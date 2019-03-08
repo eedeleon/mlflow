@@ -71,7 +71,7 @@ def get_tracking_uri():
     elif env.get_env(_TRACKING_URI_ENV_VAR) is not None:
         return env.get_env(_TRACKING_URI_ENV_VAR)
     else:
-        return os.path.abspath(DEFAULT_LOCAL_FILE_AND_ARTIFACT_PATH)
+        return ""
 
 
 def get_artifact_uri(run_id, artifact_path=None):
